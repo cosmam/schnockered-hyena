@@ -5,16 +5,22 @@
 
 #include<QVector>
 
+class Path;
 class Square;
 
 class Board
 {
 public:
     Board( uint rows, uint cols );
+    ~Board();
 
     Square * GetSquare( uint row, uint col ) const;
 
     uint GetSize() const;
+
+    uint GetMaxRow() const;
+
+    uint GetMaxCol() const;
 
 private:
 

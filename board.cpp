@@ -1,8 +1,7 @@
 #include "board.h"
 
+#include "path.h"
 #include "square.h"
-
-#include <QDebug>
 
 Board::Board( uint rows, uint cols) :
     m_rows( rows ),
@@ -50,6 +49,14 @@ Board::Board( uint rows, uint cols) :
 
 }
 
+Board::~Board()
+{
+    foreach( Square * square, m_squares )
+    {
+        delete square;
+    }
+}
+
 Square * Board::GetSquare( uint row, uint col ) const
 {
     Square * square( NULL );
@@ -63,4 +70,14 @@ Square * Board::GetSquare( uint row, uint col ) const
 uint Board::GetSize() const
 {
     return ( m_rows * m_cols );
+}
+
+uint Board::GetMaxRow() const
+{
+    return (m_rows - 1);
+}
+
+uint Board::GetMaxCol() const
+{
+    return (m_cols - 1);
 }
